@@ -1,6 +1,6 @@
 {
   "name": "protected-react-routes-generators",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "author": "Mohammed Saber Mohammed",
   "description": "React protected routes generator",
   "main": "src/index.js",
@@ -20,5 +20,7 @@
     "type": "git",
     "url": "https://github.com/MohammedSaberMohammed/protected-react-routes-generators.git"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/preset-react": "^7.12.13"
+  }
 }

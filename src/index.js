@@ -38,9 +38,8 @@ export default structure => {
 
   // Fallback Routes
   if (fallbackComponent && isValidComp(fallbackComponent)) {
-    const notFoundRoute = <Route component={() => fallbackComponent} />;
 
-    dynamicRoutes.push(notFoundRoute);
+    dynamicRoutes.push(<Route component={() => fallbackComponent} />);
   }
 
   return dynamicRoutes;
