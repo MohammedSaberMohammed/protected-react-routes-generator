@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // Utils
