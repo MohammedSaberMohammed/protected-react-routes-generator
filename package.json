@@ -1,6 +1,6 @@
 {
   "name": "protected-react-routes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
@@ -10,6 +10,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MohammedSaberMohammed/protected-react-routes-generator.git"
   },
   "scripts": {
     "start": "react-scripts start",
