@@ -1,7 +1,10 @@
 {
   "name": "protected-react-routes-generator",
   "version": "1.0.0",
-  "private": true,
+  "author": "Mohammed Saber Mohammed",
+  "license": "MIT",
+  "main": "src/index.js",
+  "bin": "src/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
@@ -12,6 +15,12 @@
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
   },
+  "keywords": [
+    "react",
+    "react-router",
+    "protected-react-router",
+    "protected-routes"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
