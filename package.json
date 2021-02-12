@@ -1,6 +1,16 @@
 {
-  "name": "protected-react-routes-generator",
+  "name": "protected-react-routes-generators",
   "version": "1.0.0",
+  "author": "Mohammed Saber Mohammed",
+  "description": "React protected routes generator",
+  "main": "src/index.js",
+  "keywords": [
+    "React",
+    "Protected",
+    "Routes",
+    "Router",
+    "Protected-routes"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
