@@ -124,7 +124,7 @@ fallbackComponent | JSX Element | false
          * path: string
          * component: React.Component
          * routeProps: Object -----> To override route props
-         * redirectPath: String ----> To redirect to specific location [ instead of fall ]
+         * redirectPath: String ----> To redirect to specific location [ instead of fallbackPath ]
          * condition: to override when to show the component or when to [ Redirect ]
          */
       }
