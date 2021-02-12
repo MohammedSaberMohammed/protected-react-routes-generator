@@ -79,17 +79,19 @@ The important thing is **RoutesConfiguration** function which accepts an object 
 
 ### **isAuthenticated**
 #### it's [ very important ] because it's used to differentiate LoggedIn/out users to give back the wanted routes.
+
 prop            | Type  | isRequired
 ----------------|-------|-----------
 isAuthenticated | bool  | true
 
 ### **anonymousStructure**
 #### it's an object that [ ONLY ] has **1** prop which is routes array [ each item is a route Model ], these routes are allowed for all personas regardless he/she authenticated or not.
+
 prop               | sibling      | Type    | isRequired
 -------------------|--------------|---------|------------
 anonymousStructure |  **routes**  | object  | false
 routes             | none         | array   | false
----------------------------------------------------------
+
 ### **authorizedStructure**
 #### it's an object that [ ONLY ] has **2** props which is routes array [ each item is a route Model ], these routes are allowed for [ LoggedIn ] users and the second option is fallbackPath: which is used to redirect to predefined url [ if a user didn't make a login then he tried to access a page from authorized routes ].
 prop                | sibling                    | Type    | isRequired
@@ -97,7 +99,7 @@ prop                | sibling                    | Type    | isRequired
 authorizedStructure |  **routes, fallbackPath**  | object  | false
 routes              | none                       | array   | false
 fallbackPath        | none                       | string  | true [ in case of routes is provided ]
-----------------------------------------------------------------------------------------------------
+
 
 ### **unAuthorizedStructure**
 #### it's an object that [ ONLY ] has **2** props which is routes array [ each item is a route Model ], these routes are allowed for [ LoggedOut ] users and the second option is fallbackPath: which is used to redirect to predefined url [ if a loggedIn user didn't make a logout then he tried to access a page from authorized routes ].
@@ -106,13 +108,13 @@ prop                  | sibling                    | Type    | isRequired
 unAuthorizedStructure |  **routes, fallbackPath**  | object  | false
 routes                | none                       | array   | false
 fallbackPath          | none                       | string  | true [ in case of routes is provided ]
-----------------------------------------------------------------------------------------------------
+
 ### **fallbackComponent**
 #### it's a jsx component that is used as a fallback for the whole router Like('404', NotFound)
 prop              | Type        | isRequired
 ------------------|-------------|-----------
 fallbackComponent | JSX Element | false
----------------------------------------------------
+
 
 ### route Model
 ```javascript
