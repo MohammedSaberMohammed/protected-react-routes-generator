@@ -11,7 +11,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 // Utility
-import RoutesConfiguration from 'protected-react-routes-generators';
+import RoutesConfiguration from 'protected-react-routes-generator';
 // Routes
 import CoursePayment from '../Payment/Course';
 import PaymentResult from '../Payment/PaymentResult';
