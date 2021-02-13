@@ -1,9 +1,10 @@
 {
   "name": "protected-react-routes-generators",
-  "version": "1.0.9",
+  "version": "1.1.4",
   "author": "Mohammed Saber Mohammed",
   "description": "React protected routes generator",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "license": "UNLICENSED",
   "keywords": [
     "React",
@@ -12,8 +13,12 @@
     "Router",
     "Protected-routes"
   ],
+  "scripts": {
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src -d dist --copy-files"
+  },
   "dependencies": {
-    "react": "^17.0.1",
+    "@babel/core": "^7.12.16",
+    "react": "^16.12.0",
     "react-router-dom": "^5.2.0"
   },
   "repository": {
@@ -21,6 +26,13 @@
     "url": "https://github.com/MohammedSaberMohammed/protected-react-routes-generators.git"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.16",
+    "@babel/plugin-transform-react-jsx": "^7.12.16",
     "@babel/preset-react": "^7.12.13"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   }
 }
