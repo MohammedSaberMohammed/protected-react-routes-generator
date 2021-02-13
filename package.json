@@ -4,7 +4,7 @@
   "author": "Mohammed Saber Mohammed",
   "description": "React protected routes generator",
   "main": "src/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": [
     "React",
     "Protected",
