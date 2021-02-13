@@ -5,7 +5,7 @@
   "description": "React protected routes generator",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": [
     "React",
     "Protected",

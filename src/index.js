@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // Utils
 import { has, isValidComp } from './Utils';
@@ -11,6 +11,7 @@ import { has, isValidComp } from './Utils';
   * @param {object} [structure.authorizedStructure] - it's an object that has [ fallbackPath: {string}, routes: {array} ], fallbackPath: is used for redirect when a logged [in] user tried to access unAuthorized route, routes: only The Logged [in] Routes Available
   * @param {object} [structure.unAuthorizedStructure] - it's an object that has [ fallbackPath: {string}, routes: {array} ], fallbackPath: is used for redirect when a logged [out] user tried to access route that requires [Authorization] , routes: only The Logged [out] Routes Available
   * @param {component} [fallbackComponent] - in order to redirect in all cases if the route doesn't match.
+  * @returns {Array}
 */
 
 export default structure => {
@@ -19,7 +20,7 @@ export default structure => {
     anonymousStructure = {},
     authorizedStructure = {},
     unAuthorizedStructure = {},
-    fallbackComponent
+    fallbackComponent = Component
   } = structure || {};
 
   const dynamicRoutes = [];
@@ -51,7 +52,7 @@ export default structure => {
  * component: React.Component
  * routeProps: Object -----> To override route props
  * redirectPath: String ----> To redirect to specific location
- * condition: to override when to show the component or when to [ Redirect ]
+ * showRouteIf: to override when to show the component or when to [ Redirect ]
  */
 const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymous') => {
   const generatedRoutes = [];
@@ -70,39 +71,40 @@ const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymo
           component,
           routeProps = {},
           redirectPath = '',
-          condition = true
+          showRouteIf = true
         } = route || {};
+        // Show Route only [ in The list ] if this prop is true 
+        if (showRouteIf) {
+          // check the mandatory props for a routes
+          if (!path || !isValidComp(component)) {
+            console.warn(`A [route] is skipped because one of the following, 1/ No valid [path] prop provided for the route, 2/ No valid [component] provided for the route`);
+          } else {
 
-        // check the mandatory props for a routes
-        // [=== And ===] Skip [fallbackPath] in case of anonymous
-        if (!path || (!isAnonymous ? !fallbackPath : false) || !isValidComp(component)) {
-          console.warn(`A [route] is skipped because one of the following, 1/ No valid [path] prop provided for the route, 2/ No valid [component] provided for the route, ${!isAnonymous ? `3/ No [fallbackPath] for ${type} Set` : ''}`);
-        } else {
+            const renderCondition = (isAuthorized ? isAuthenticated : !isAuthenticated);
+            // In case of Anonymous Routes ===> Just generate without Any Logic
+            if (isAnonymous) {
+              return generatedRoutes.push(
+                <Route
+                  exact
+                  key={`${path}_${index}`}
+                  path={path}
+                  component={() => component}
+                  {...routeProps}
+                />
+              );
+            }
 
-          const renderCondition = (isAuthorized ? isAuthenticated : !isAuthenticated) && condition;
-          // In case of Anonymous Routes ===> Just generate without Any Logic
-          if (isAnonymous) {
             return generatedRoutes.push(
               <Route
                 exact
-                key={`${path}_${index}`}
-                path={path}
-                component={() => component}
-                {...routeProps}
+                key={`${route.path}_${index}`}
+                path={route.path}
+                render={props => {
+                  return renderCondition ? component : <Redirect to={redirectPath || fallbackPath} />;
+                }}
               />
             );
           }
-
-          return generatedRoutes.push(
-            <Route
-              exact
-              key={`${route.path}_${index}`}
-              path={route.path}
-              render={props => {
-                return renderCondition ? component : <Redirect to={redirectPath || fallbackPath} />;
-              }}
-            />
-          );
         }
       });
     }
