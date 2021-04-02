@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /* eslint-disable import/no-anonymous-default-export */
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import { Route, Redirect } from 'react-router-dom'; // Utils
 
 import { has, isValidComp } from './Utils';
@@ -88,7 +88,8 @@ const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymo
                 exact: true,
                 key: `${path}_${index}`,
                 path: path,
-                component: () => component
+                render: props => /*#__PURE__*/cloneElement(component, { ...props
+                })
               }, routeProps)));
             }
 
@@ -97,7 +98,8 @@ const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymo
               key: `${route.path}_${index}`,
               path: route.path,
               render: props => {
-                return renderCondition ? component : /*#__PURE__*/React.createElement(Redirect, {
+                return renderCondition ? /*#__PURE__*/cloneElement(component, { ...props
+                }) : /*#__PURE__*/React.createElement(Redirect, {
                   to: redirectPath || fallbackPath
                 });
               }
