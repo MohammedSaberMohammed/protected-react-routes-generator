@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 // Utils
 import { has, isValidComp } from './Utils';
@@ -88,7 +88,7 @@ const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymo
                   exact
                   key={`${path}_${index}`}
                   path={path}
-                  component={() => component}
+                  render={props => cloneElement(component, { ...props })}
                   {...routeProps}
                 />
               );
@@ -100,7 +100,7 @@ const routesGenerator = (isAuthenticated = false, routeSet = {}, type = 'anonymo
                 key={`${route.path}_${index}`}
                 path={route.path}
                 render={props => {
-                  return renderCondition ? component : <Redirect to={redirectPath || fallbackPath} />;
+                  return renderCondition ? cloneElement(component, { ...props }) : <Redirect to={redirectPath || fallbackPath} />;
                 }}
               />
             );
