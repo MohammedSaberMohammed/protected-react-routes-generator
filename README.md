@@ -5,7 +5,7 @@ A React utility that is made to:
 3. Handle redirection
    1. prevent login user to access route that not require authentication and viceversa.
 
-### **You can play with [Demo](https://codesandbox.io/s/protected-react-routes-generator-demos-yuxvc) from here **
+### You can play with [Demo](https://codesandbox.io/s/protected-react-routes-generator-demos-yuxvc) from here 
 
 # Example
 ```javascript
