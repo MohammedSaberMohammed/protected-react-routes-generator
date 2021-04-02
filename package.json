@@ -1,6 +1,6 @@
 {
   "name": "protected-react-routes-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Mohammed Saber Mohammed",
   "description": "React protected routes generator",
   "main": "dist/index.js",
