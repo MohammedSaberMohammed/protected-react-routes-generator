@@ -1,6 +1,6 @@
 {
   "name": "protected-react-routes-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Mohammed Saber Mohammed",
   "description": "React protected routes generator",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
     "Protected-routes"
   ],
   "scripts": {
-    "publish:npm": "rm -rf dist && mkdir dist &&  babel src -d dist --copy-files"
+    "publish:npm": "rm -rf dist && mkdir dist && babel src -d dist --copy-files"
   },
   "dependencies": {
     "@babel/core": "^7.12.16",

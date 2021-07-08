@@ -39,7 +39,7 @@ export default structure => {
 
   // Fallback Routes
   if (fallbackComponent && isValidComp(fallbackComponent)) {
-    const notFoundRoute = <Route component={() => fallbackComponent} />;
+    const notFoundRoute = <Route render={props => cloneElement(fallbackComponent, { key: 'fallback', ...props })} />;
 
     dynamicRoutes.push(notFoundRoute);
   }
