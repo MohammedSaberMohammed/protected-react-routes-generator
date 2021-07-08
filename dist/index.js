@@ -40,7 +40,10 @@ export default (structure => {
 
   if (fallbackComponent && isValidComp(fallbackComponent)) {
     const notFoundRoute = /*#__PURE__*/React.createElement(Route, {
-      component: () => fallbackComponent
+      render: props => /*#__PURE__*/cloneElement(fallbackComponent, {
+        key: 'fallback',
+        ...props
+      })
     });
     dynamicRoutes.push(notFoundRoute);
   }
